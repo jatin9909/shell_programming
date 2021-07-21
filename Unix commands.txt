@@ -1,0 +1,102 @@
+1. Write the results of the following commands  -
+
+(a) $ls [a-d]??
+It displays all the names of the files and directories that begin with any character from a through d 
+, followed by exactly two characters.
+
+(b) $ls [a-z][0-9]*
+It displays all the names of the files and directories that begin with any character from a through z in lower case, 
+followed by any number from 0 through 9 , followed by any number of characters.
+
+(c) $ls -Rt 
+list subdirectories recursively, sort by time, newest first
+
+(d) $mkdir -m 740 apple
+This command creates a directory apple with read, write, and execute permissions for the owner; 
+only read permission for the group; and nothing permissions for others.
+
+(e) $mkdir -p fruits/delicious/apple 
+This command creates a directory fruits; within the fruits, a subdirectory
+delicious gets created, and under that, a sub-subdirectory apple is created.
+
+(f) $touch 07151000 mbacourse.txt 
+This sets the modification and access time of the file mbacourse.txt to July 15 10:00
+
+(g) $cat mbacourse.txt lawcourse.txt
+This command displays the contents of the file mbacourse.txt followed by the contents of the file
+lawcourse.txt.
+
+(h) $rmdir -p fruits/delicious/apple
+This command deletes the apple sub-subdirectory from the delicious subdirectory;
+then it deletes the delicious subdirectory from the fruits directory and finally, from
+the fruits directory
+
+
+2. Write the commands that will do the following things - 
+
+(a) To display the list of files and directories that begin with a vowel 
+$ ls [aeiouAEIOU]*
+
+(b) To change the access time of the file mbacourse.txt to Feb 10 09:15 
+$touch -a 02100915 mbacourse.txt 
+
+(c) To show the contents of the file mbacourse.txt along with line numberings 
+$cat –n mbacourse.txt
+
+(d) To concatenate the contents of the two files mbacourse.txt and lawcourse.txt and store them in a third file career.txt 
+$ cat mbacourse.txt lawcourse.txt >career.txt
+
+(e) To copy the entire directory teachers along with its subdirectories in the name faculty
+$ cp /teachers/faculty
+
+(f) To forcibly remove the file result.txt from the school directory 
+$ rm –f school/results.txt
+
+(g) To move the file notes.txt and programs.doc from the current directory to the professional subdirectory of the college directory
+$ mv notes.txt programs.doc /college/professional
+
+
+3. What will the following commands do?
+
+(a) $chmod 410 management.txt 
+This command will assign permission read to user, execute to group, nothing to others of the file management.txt
+
+(b) $umask 233 
+umask stands for user file creation. Value is 233 so default permission will be 666-233 = 433 which means, read to user,
+write and execute to groups, write and execute to groups, which will becomes the original permission.
+
+(c) $chgrp jobs mbacourse.txt 
+Change owenership of file mbacourse.txt from group it to group jobs.
+
+(d) $head -c 100 mbacourse.txt management .txt 
+It will displays the first 100 lines of both mbacourse.txt and mbacourse.txt file. 
+
+(e) $tail -2 management.txt 
+It will displays the last two lines of file management.txt.
+
+(f) $man -K disk 
+This command will search all the commands documented in the manual pages that contain the pattern disk.
+
+(g) $cut -d"," -f3 bank.lst 
+This statement will show the third field of the file bank.lst where fields are delimited by commans (,)
+
+(h) $paste -d"<>" names.txt numbers.txt
+This command will join the two files names and numbers.txt with the help of <> delimiter. 
+
+
+4. Write the command for the following tasks: 
+
+(a) To assign read, write, and execute permissions to the owner; read and write permission to the group; 
+and only read permission to others for the file mbacourse.txt 
+$chmod 764 mbacourse.txt
+
+(b) To set permissions for the directories to be created in the future as read, write, 
+and exe cute for the owner; read and write for the group; and only read for others 
+$umask 013 (777-013 = 764) 
+
+(c) To change the ownership of the file mbcourse.txt to charles 
+$chown charles mbacourse.txt
+
+(d) To display the first two lines of the files mbacourse.txt and management.txt 
+$head -2 mbacourse.txt management.txt
+
