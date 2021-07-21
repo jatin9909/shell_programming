@@ -1,0 +1,103 @@
+1. Consider a file, stock.lst, which contains the product code, product name, price, quantity, and
+category of product as follows.
+
+Product code	Product name	Price	Quantity	Category of product
+101	           Jeans	       1000	   10	         garments
+102	           Camera	       5000	    3	        electronics
+103	          Trousers	     1200   	5        	 garments
+104	           Laptop	       4000	   15	        electronics
+105	          Cellphone	     8000	    8	        electronics
+
+With respect to this file, stock.lst, what will the output of the following commands be?
+(a) $ awk '/garment/' stock.lst
+101 Jeans 1000 10 garments
+103 Trousers 1200 5 garments
+
+(b) $ awk '/electronics/ { print $2,$4 }' stock.lst
+Camera 3
+Laptop 15
+CellPhone 8
+
+(c) $ awk '$4 < 10' stock.lst
+ 102 Camera 5000 3 electronics
+ 103 Trousers 1200 5 garments
+ 105 CellPhone 8000 8 electronics
+
+(d) $ awk 'NR >0 { print NR,$0 }' stock.lst
+1 101 Jeans 1000 10 garments
+2  102 Camera 5000 3 electronics
+3  103 Trousers 1200 5 garments
+4  104 Laptop 40000 15 electronics
+5  105 CellPhone 8000 8 electronics
+
+(e) $ awk 'NR == 2, NR == 4 { print NR,$0 }' stock.lst
+2  102 Camera 5000 3 electronics
+3  103 Trousers 1200 5 garments
+4  104 Laptop 40000 15 electronics
+
+(f) $ awk '{ print NF }' stock.lst
+5
+5
+5
+5
+5
+
+(g) $ awk '{ print $NF }' stock.lst
+garments
+electronics
+garments
+electronics
+electronics
+
+(h) $ awk '$5 ~/s$/' stock.lst
+101 Jeans 1000 10 garments
+102 Camera 5000 3 electronics
+103 Trousers 1200 5 garments
+104 Laptop 40000 15 electronics
+105 CellPhone 8000 8 electronics
+
+(i) $ awk '$2 ~ "^C" ' stock.lst
+102 Camera 5000 3 electronics
+105 CellPhone 8000 8 electronics
+ 
+(j) $ awk '$2 ~ "^C" && $4 < 5 ' stock.lst
+102 Camera 5000 3 electronics
+
+
+2. Considering the file stock.list as the input file, write the commands for performing the following tasks.
+(a) To print only the code of the electronics products.
+$ awk '/electronics/ {print $1}' stock.lst
+
+(b) To print the information of the products whose price is in the range 5000–10,000.
+$ awk '$3 >=5000 && $3 <=10000' stock.lst
+
+(c) To print all the products except jeans.
+$ awk '$2 !~ /Jeans/ {print $2}' stock.lst
+
+(d) To print the third record in the file.
+$ awk 'NR == 3 { print $0 }' stock.lst
+
+(e) To print the product whose code is 102.
+$ awk '$1==102 {print $2}' stock.lst
+
+(f) To print the products whose product names begin from any character between a to d.
+$ awk '$2 ~ "^[A-D]" {print $2}' stock.lst
+
+(g) To print all the products whose product name is more than six characters long.
+$ awk 'length ($2) >6' stock.lst
+
+(h) To print all the products whose quantity is less than 10.
+$ awk '$4 < 10 {print $0}' stock.lst
+
+(i) To print all the products whose product name is laptop.
+$ awk '$2 ~ Laptop {print $2}' stock.lst
+
+(j) To print the product name and price of all the garment product whose code is less than 103
+and whose price is more than 800.
+$ awk '$1<103 && $3>800 {print $2,$3}' stock.lst
+
+(k) To print only the product names of the products whose quantity is between 10 and 15.
+awk ' $4 >=10 && $4 <=15 {print $2}'
+
+(l) To print all the products whose product name begins with the character ‘C’.
+$ awk ' $2 ~ "^C" {print $0}' stock.lst
